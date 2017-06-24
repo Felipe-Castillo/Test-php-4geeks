@@ -1,0 +1,11 @@
+<html>
+<head></head>
+<body style="background: black; color: white">
+<p>Dear , {{$first_name}}</p>
+
+<p>Your Login Credentails are below: 
+				email : {{$email}}
+				Password:  {{$password}}
+</p>
+</body>
+</html>		

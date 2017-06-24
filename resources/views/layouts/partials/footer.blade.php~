@@ -1,0 +1,118 @@
+  <!-- FAQ button -->
+        <div class="fixed-action-btn">
+            <a class="btn_question btn-floating btn-large waves-effect ">
+                <i class="ion-help"></i>
+            </a>
+        </div>
+<!-- heren ends FAQ button -->
+<!--     <div class="container"> -->
+        <div class="app row">
+           <div class="container">
+            <div class="col s12 m6 l6">
+                <div class="descarga-app center">
+                    <h5 class="bold-text">¡Descarga SaludVitale en tu celular!</h5>
+                    <img class="responsive-img" src="{{asset('/images/googleplay.png') }}">
+                    <img class="responsive-img" src="{{asset ('/images/appstore.png') }}">
+                </div>
+            </div>
+            <div class="center col s12 m6 l6">
+                <img class=" responsive-img" src="{{asset ('/images/telephone2.png') }}">
+            </div>
+            </div>
+        </div>
+ <!--    </div> -->
+<!-- Main Footer -->
+	<footer class="footer page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="list-footer col l4 m4 s12">
+                    <ul class="li-footer">
+                        <li><a class="bold-text" href="#!">SaludVitale.com</a></li>
+                        <li><a href="#!">Acerca de Nosotros</a></li>
+                        <li><a href="#!">Contáctanos</a></li>
+                        <li><a href="#!">Preguntas Frecuentes</a></li>
+                        <li><a href="#!">Términos Legales</a></li>
+                    </ul>
+                </div>
+                <div class=" list-footer col l4 m4 s12">
+                    <ul class="li-footer">
+                        <li><a class="bold-text white-text">Aplicaciones Moviles</a></li>
+                        <li><a href="#!">Google Play</a></li>
+                        <li><a href="#!">App Store</a></li>
+                    </ul>
+                </div>
+                <div class="list-footer col l4 m4 s12">
+                    <p class="bold-text white-text">Redes Sociales</p>
+                    <ul class="redes-sociales">
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!"><img class="responsive-img" src="../images/facebook.png"></a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!"><img class="responsive-img" src="../images/instagram.png"></a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!"><img class="responsive-img" src="../images/twitter.png"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2017 Desarrollado por <a href="#">PixSolution</a>
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
+    </footer>
+     <!-- Modal Structure -->
+    <div id="modal1" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4 class="entrar">Entrar</h4>
+            <div class="center">
+                <a class="center btn-facebook waves-effect waves-light btn"><i class="icon-facebook ion-social-facebook"></i>  Iniciar sesión con Facebook</a>
+            </div>
+            <div class="row">
+                <div id="validation-errors" class="m-top-10"></div>
+                <form class="col s12" method="POST" action="{{ url('/login')}}" id="ajax-form" autocomplete="off">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mail_outline</i>
+                            <input id="icon_prefix" type="text" class="validate" name="email">
+                            <label for="icon_prefix">Correo Electronico</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">vpn_key</i>
+                            <input class="input-style" id="icon_telephone" type="password" class="validate" name="password">
+                            <label for="icon_telephone">Contraseña</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <a class="center">
+                                <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" name="remember" />
+                                <label for="filled-in-box">Recordarme</label>
+                            </a>
+                        </div>
+                        <div class="col s6">
+                            <a href="{{ url('/password/reset') }}" class="recovery-pass center">
+                                ¿Has olvidado tu Contraseña?
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <button class="btn-registration btn waves-effect waves-light" type="submit" name="action">Entrar
+                        <i class="material-icons right">send</i>
+                      </button>
+                    </div>
+                </form>
+                <div class="center col s12">
+                    <p>¿Eres nuevo en SaludVitale?</p>
+                    <a class="registrate" href="{{url('/register')}}">Regístrate</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cerrar</a>
+        </div>
+    </div>

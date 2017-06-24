@@ -1,0 +1,255 @@
+$('.carousel.carousel-slider').carousel({fullWidth: true});
+
+$('#login-form').on('submit', function(e) {
+
+    e.preventDefault();
+    var form = $('#login-form')
+    var url = form.attr('action');
+    console.log(url);
+   // var url = form.prop('action');
+  
+    $.ajax({
+        type: "post",
+        url: url,
+        data: form.serialize(),
+        dataType: 'json',
+        success: function(json) {
+             console.log(json) ; 
+             //$("#modal1").hide(); 
+            // $('#modal1').modal('toggle');
+        	 //$('#modal1').modal('hide');
+             location.reload(true);
+        },
+        error: function(response) {
+            if (response.status ==422){
+                    displayFieldErrors(response);
+            }
+            //console.log(json.responseText);
+        },
+    });
+
+});
+
+$('#ajax-form').on('submit', function(e) {
+
+    e.preventDefault();
+
+    var form = $(this);
+    var url = form.attr('action');
+    console.log(url);
+    
+    $.ajax({
+        type: "post",
+        url: url,
+        data: form.serialize(),
+        dataType: 'json',
+        success: function(response) {
+          
+          console.log("done");  
+          if (response.status ==422){
+            console.log("success");  
+            displayFieldErrors(response);
+          }
+          if (response.status ==200){
+            console.log(error) ;  
+           // $('#modal1').modal('hide');
+            location.reload(true);
+          }
+
+        },
+        error: function(response) {
+          console.log("error");
+          console.log("done");  
+          if (response.status ==422){
+            console.log("success");  
+            displayFieldErrors(response);
+          }
+          if (response.status ==200){
+            //console.log(error) ;  
+            //$('#modal1').modal('hide');
+            location.reload(true);
+          }
+        }
+    })
+
+});
+
+/**
+ * Uses Notify.js to display validation errors
+ * next to the relevant field
+ * @param response
+ */
+function displayFieldErrors(response){
+
+    var gotErrors = false;
+
+    var errorPostion = "top";
+    var errorString = '';
+
+    $.each(response.responseJSON, function (key, item) {
+        //key is the field
+        $gotErrors = true;
+        errorString += '<li>' + item + '</li>';
+        //console.log(errorString);
+       
+        //$("#" + key).notify(item, {position: errorPostion});
+        //$('#loginErrors').html(errorString);
+    });
+    //$("#validation-errors").append('<div class="alert alert-success"><strong>'+ errorString +'</strong><div>');
+    $("#validation-errors").html('<div class="alert alert-danger"><strong>'+ errorString +'</strong><div>');
+    return gotErrors;
+}    
+
+// START THE SELECT
+$('select').material_select();
+
+//START MENU DRAWER
+$('.button-collapse').sideNav({
+    menuWidth: 310, // Default is 300
+    edge: 'left', // Choose the horizontal origin
+    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    draggable: true // Choose whether you can drag to open on touch screens
+});
+
+//TO SHOW THE SEARCHER IN MOBILE
+$('#buscador-icon').on('click', function() {
+    $('.brand-logo').toggle('swing');
+});
+
+//START MODAL
+$('.modal').modal();
+
+//START SLIDER
+$('.slider').slider();
+
+
+//EFFECTS OF A PLANS 
+$('#plans_1').on('click', function(event) {
+    $('#plans_1').css({'background-color': '#21A0D8', 'border': '2px solid #005CA4'});
+    $('#plans_2').css({'background-color': '', 'border': ''});
+    $('#plans_3').css({'background-color': '', 'border': ''});
+    $plan = 1;
+    $price = $("#plans_1 span").html();
+    subscription($plan,$price);
+   
+});
+
+$('#plans_2').on('click', function(event) {
+    $('#plans_2').css({'background-color': '#21A0D8', 'border': '2px solid #005CA4'});
+    $('#plans_1').css({'background-color': '', 'border': ''});
+    $('#plans_3').css({'background-color': '', 'border': ''});
+    $plan = 2;
+    $price = $("#plans_2 span").html();
+    subscription($plan,$price);
+    
+});
+
+$(' #plans_3').on('click', function(event) {
+    $('#plans_3').css({'background-color': '#21A0D8', 'border': '2px solid #005CA4'});
+    $('#plans_1').css({'background-color': '', 'border': ''});
+    $('#plans_2').css({'background-color': '', 'border': ''});
+    $plan = 3;
+    $price = $("#plans_3 span").html();
+    subscription($plan,$price);
+    
+});
+
+// START DATEPICKER
+$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+});
+
+//EFFECTS OF PROFILE POST CARDS
+$('#description').hide();
+
+$('#edit_specialty').hide();
+
+$('#contact').hide();
+
+$('#edit_specialty, #continue').on('click', function(event) {
+    $('#specialty').toggle(1000, 'swing');
+    $('#edit_specialty').toggle();
+});
+
+$('#edit_description, #continue2').on('click', function(event) {
+    $('#description').toggle(1100, 'swing');
+    $('#edit_description').toggle();
+});
+
+$('#edit_contact, #continue3').on('click', function(event) {
+    $('#contact').toggle(1100, 'swing');
+    $('#edit_contact').toggle();
+});
+
+function subscription($plan,$price){
+    $('#subscription-plan').val($plan);
+    //alert(parseFloat($price));
+    $("#subscription-price").val(parseFloat($price));
+    //$('.subscribe-btn').prop("disabled", false);  
+    $(".subscribe-btn").removeAttr('disabled');
+    
+}
+
+function searchByCity($city_id){
+ //alert($city_id);
+ $('#serchCity').val($city_id);   
+ $('form#search_by_city').submit();
+}
+
+function searchBySpeciality($speciality_id){
+//alert($speciality_id);
+ $('#serchSpeciality').val($speciality_id);   
+ $('form#search_by_speciality').submit();
+    
+}
+
+/**
+* Will allow only number.
+*/
+function onlyNumberKey(evt)
+{
+   evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    
+    if((charCode > 47 && charCode < 58) || charCode == 8 || charCode == 9 || charCode == 46)
+        return true;
+    else
+        return false;
+}
+
+$('#profile_state').on('change',function(){
+		var state_id	= $(this).val();
+		//alert(state_id);
+	    $.ajax({
+        type: "get",
+        url: '/profile/getStateCity',
+        data: {state_id : state_id}	,
+        dataType: 'json',
+        success: function(response) {
+           $('#profile_city').html(response.data);
+            // clear contents
+            var $selectDropdown = 
+            $("#profile_city").empty() .html(' ');
+
+            $selectDropdown.append(response.data);
+
+            // trigger event
+            $selectDropdown.trigger('contentChanged');
+        },
+        error: function(response) {
+            if (response.status ==422){
+                    displayFieldErrors(response);
+            }
+            //console.log(json.responseText);
+        },
+    });
+});
+$('#profile_city').on('contentChanged', function() {
+    // re-initialize (update)
+    $(this).material_select();
+});
+
+
+
+

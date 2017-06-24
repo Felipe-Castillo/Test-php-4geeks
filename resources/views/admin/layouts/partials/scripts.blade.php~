@@ -1,0 +1,74 @@
+<!-- Laravel App -->
+<script src="{{ url (mix('/js/app.js')) }}" type="text/javascript"></script>
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+      Both of these plugins are recommended to enhance the
+      user experience. Slimscroll is required when using the
+      fixed layout. -->
+<!-- <script>
+    window.Laravel = {!! json_encode([
+        'csrfToken' => csrf_token(),
+    ]) !!};
+</script>
+ -->
+<!-- page script -->
+
+<script>
+  $(function () {
+  	$.noConflict();
+
+   $('#users-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '/admin/users/data',
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'first_name', name: 'first_name'},
+            {data: 'last_name', name: 'email'},
+            {data: 'email', name: 'email'},
+            {data: 'action', name: 'action', orderable: false, searchable: false}
+        ]
+    });
+    
+  $(".deleteUser").click(function(){
+  	     alert("hello");
+        var id = $(this).data("id");
+        alert(id);
+        exit;
+        var token = $(this).data("token");
+        $.ajax(
+        {
+            url: "user/delete/"+id,
+            type: 'DELETE',
+            dataType: "JSON",
+            data: {
+                "id": id,
+                "_method": 'DELETE',
+                "_token": "{{ csrf_token() }}" ,
+            },
+            success: function ()
+            {
+                console.log("it Work");
+            }
+        });
+
+        console.log("It failed");
+    });  
+   
+   $("#insurance-table").DataTable({
+      "paging": true,
+      "lengthChange": false,
+    });
+    $('#professionals-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '/admin/health_professionals/data',
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'full_name', name: 'full_name'},
+            {data: 'email', name: 'email'},
+            {data: 'action', name: 'action', orderable: false, searchable: false}
+        ]
+    });
+  });
+</script>

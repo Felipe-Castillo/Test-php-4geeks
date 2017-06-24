@@ -1,0 +1,152 @@
+.home-slider .carousel.carousel-slider{
+   height: 440.125px !important;
+}
+
+.f-left{
+	float:left;
+	margin-right : 5px;
+}
+.m-top-10{
+  margin-top: 10px;
+}
+.m-right-5{
+	margin-right: 5px;
+}
+.profile-edit-icon{
+  margin-left: 0.4em;
+  color: #888;
+}
+.nopadding-left{
+	padding-left: 0px;
+}
+.nopadding{ padding: 0px;}
+
+.m-bottom-13{
+	margin-bottom: 13px;
+}
+.profile-pic-fixed{
+	height: 150px !important;
+	width: 150px !important;
+  
+}
+.picture-user-fixed{
+	height: 93px !important;
+	width: 93px !important;
+}
+
+#cityState-table tbody tr td:nth-child(3)
+{
+	text-align:center;
+}
+
+#speciality-table thead tr th:nth-child(2),#cityState-table thead tr th:nth-child(3),#insurance-table thead tr th:nth-child(2)
+{
+	text-align:center !important;
+	padding-right: 8px !important;
+}
+.sub_plans{
+  color: #fff;  
+}
+
+/*.sub_plans:hover .profile-meter{
+  display: block;
+  background-color:#205A99;
+  color: #fff;  
+}*/
+.subscriptions_plans .card-panel{
+  margin: 0;
+}
+
+//Star Rating
+#professional-rating .jq-ry-container{
+	margin: 0 auto;
+}
+
+
+.profile_meter_savings{
+    background-color:#205A99;
+    color: #ffffff;
+    border:  none; 
+    padding: 0.5em !important;
+}
+
+td.fc-day.fc-past {
+    background-color: #EEEEEE;
+    pointer-events: none !important;
+    cursor: default;
+}
+#preview_multiple_timeslot i, #preview_single_timeslot i{ 
+  color: #848484;
+  margin: 0px 4px;
+}
+.preview-secondary-content {
+    float: right;
+  /*  color: #26a69a;*/
+}
+#preview_multiple_timeslot .collection-header, #preview_single_timeslot .collection-header{
+  background-color: #21A0D8;
+  color: #fff;
+ 
+}
+#preview_multiple_timeslot .collection-header h5,#preview_single_timeslot .collection-header h5{
+   font-size: 1em;
+}
+.skin-blue .main-header .logo {
+    background-color: #fff;
+}
+.skin-blue .main-header .logo img{
+   /* margin-top: 0.5em;*/
+}
+.skin-blue .main-header .logo:hover {
+  background-color: none;
+}
+label[data-error]:after {
+  white-space: nowrap;
+}
+#myIframe
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.select-wrapper input.select-dropdown {
+ 
+    padding-right: 10px;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+}
+#end_date_reservation-error{
+  display: none !important;
+}
+#validation-errors{
+  color: red;
+}
+#validation-errors li{
+  list-style: none;
+}
+.input-field div.error,.select-wrapper.error {
+    position: relative;
+    top: 0rem;
+    left: 0rem;
+    font-size: 0.8rem;
+    color:  red;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
+    transform: translateY(0%);
+}
+.form-control.error {
+    border: 1px solid red !important;
+}
+.alert-success{
+  color: #3c763d;
+  font-weight: bold;
+  text-align:center;
+}
+.alert-danger{
+  color: #a94442;
+  font-weight: bold;
+  text-align:center;
+}
